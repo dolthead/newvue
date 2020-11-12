@@ -1,0 +1,7 @@
+{
+  "name": "newvue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
