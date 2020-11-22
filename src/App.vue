@@ -1,18 +1,27 @@
 <template>
   <ion-app>
-    <ion-router-outlet />
+    <div v-if="initialized">
+      <ion-router-outlet />
+    </div>
   </ion-app>
 </template>
 
 <script lang="ts">
-import { IonApp, IonRouterOutlet } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { IonApp, IonRouterOutlet } from "@ionic/vue";
+import { defineComponent } from "vue";
+import useFirebaseAuth from "./userService";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     IonApp,
-    IonRouterOutlet
-  }
+    IonRouterOutlet,
+  },
+  setup() {
+    const { initialized } = useFirebaseAuth();
+    return {
+      initialized,
+    };
+  },
 });
 </script>
