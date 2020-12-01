@@ -80,7 +80,7 @@ export default defineComponent({
 
 <style scoped>
 .bottom-section {
-  padding: 10px;
-  background-image: radial-gradient(#ff8a00, #e52e71) !important;
+  padding: 0 10px;
+  /* background-image: radial-gradient(#ff8a00, #e52e71) !important; */
 }
 </style>
