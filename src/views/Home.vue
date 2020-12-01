@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar>
+      <ion-toolbar color="primary">
         <ion-title>{{ title }}</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -12,17 +12,29 @@
           <ion-title size="large">{{ title }}</ion-title>
         </ion-toolbar>
       </ion-header>
-
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" @click="doSomething">
+          <!-- <ion-icon :icon="icons.add"></ion-icon> -->
+          <ion-icon :icon="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
       <ion-list>
-        <ion-item v-for="(x, $index) in 25" :key="$index">
+        <ion-item v-for="(x, $index) in 20" :key="$index" lines="full">
           test {{ x }}
         </ion-item>
       </ion-list>
+      <section>
+        <p class="bottom-section">
+          <ion-button expand="block"> Hello </ion-button>
+        </p>
+      </section>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
+// import * as icons from "ionicons/icons";
+import { add } from "ionicons/icons";
 import {
   IonContent,
   IonHeader,
@@ -31,6 +43,10 @@ import {
   IonToolbar,
   IonList,
   IonItem,
+  IonFab,
+  IonFabButton,
+  IonButton,
+  IonIcon,
 } from "@ionic/vue";
 import { defineComponent, ref } from "vue";
 
@@ -44,42 +60,27 @@ export default defineComponent({
     IonToolbar,
     IonList,
     IonItem,
+    IonFab,
+    IonFabButton,
+    IonButton,
+    IonIcon,
   },
   setup() {
-    const title = ref("Vue 3");
+    const title = ref("Vue 3 + Ionic 5");
+    const doSomething = () => (title.value = "Reactively updated");
     return {
       title,
+      // icons,
+      add,
+      doSomething,
     };
   },
 });
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.bottom-section {
+  padding: 10px;
+  background-image: radial-gradient(#ff8a00, #e52e71) !important;
 }
 </style>
